@@ -1,0 +1,86 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+form.form-container5{
+    background: #ffff;
+    padding: 30px;
+    position: absolute;
+    top: 20vh;
+    display: block;
+    border: none;
+    justify-content: center;
+    align-items: center;
+}
+.fg1{
+    display: block;
+    justify-content: center;
+}
+.fc1{
+    display: flex;
+    padding: 30px 10px;
+    width: 490px;
+    border-radius: 10px;
+}
+form h1{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: rgb(23, 122, 252);
+}
+form {
+    width: auto;
+    height: 50px;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid silver;
+    margin: 10px 0 18px 0;
+    padding: 0 10px;
+}
+.btn7{
+    border: none;
+    background: rgb(23, 122, 252);
+    cursor: pointer;
+    font-size: 22px;
+    color: white;
+    display: flex;
+    width: 490px;
+    height: 60px;
+    justify-content: center;
+    border-radius: 10px;
+    align-items: center;
+}
+
+::-webkit-input-placeholder { 
+    color: rgb(185, 183, 183);
+    font-size: 18px;
+    float: none;
+    font-family: 'Poppins', sans-serif;;
+    padding-left: 15px;
+}
+a:link{
+    color: rgb(23, 122, 252);
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+    .btn7{
+        padding: 15px;
+        width: 100%;
+
+    }
+    .fc1{
+        display: flex;
+        padding: 25px 10px;
+        width: 300px;
+        border-radius: 10px;
+
+    }
+}

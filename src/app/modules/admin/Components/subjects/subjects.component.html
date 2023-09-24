@@ -1,0 +1,182 @@
+<app-sidebar></app-sidebar>
+<div class="left1">
+  <div class="container-fluid pt-3 bg">
+      <img src="/assets/Circle Button.png" alt="plus" class="plus" tabindex="-1" data-toggle="modal" data-target="#exampleModalCenter"
+      aria-hidden="true">
+
+
+    <div class=" left2 mt-5">
+      <div class="flex1">
+        <h1>Subjects</h1>
+        <input class="form-control search" id="myInput" type="text" placeholder="Search"[(ngModel)]="data">
+      </div>
+      <br>
+      <div class="table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="left">Grade</th>
+              <th>Title</th>
+              <th>Image</th>
+              <th>Description</th>
+              <th>Edit / Delete</th>
+            </tr>
+          </thead>
+
+          <tbody id="myTable">
+              <tr *ngFor="let item of Users | filter:data">
+                  <td>{{item.grade}}</td>
+                  <td>{{item.title}}</td>
+                  <td>{{item.image}}</td>
+                  <td>{{item.description}}</td>
+                  <div class="icons">
+                    <img src="./assets/edit.png" alt="edit"class="edit"(click)="openModal(editCategoryModal)">
+                    <img src="./assets/dlt.png" alt="delete" class="delete"tabindex="-1" data-toggle="modal" data-target="#deleteConfirmation"
+                    aria-hidden="true">
+    
+                  </div>
+                </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--New Subject-->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body card">
+       
+        <div class="center">
+          <h3 style=" font-weight: 700;">New Subject</h3>
+        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        
+          <div class="form-group fg1">
+            <select formControlName="subject" class="form-control height fc1">
+                <option value="">Subject</option>
+                <option value="S">Tamil</option>
+                <option value="S1">Maths</option>
+                <option value="S2">Science</option>
+                <option value="S3">English</option>
+            </select>
+            <span style="color: red; font-size: 16px; display: block;margin-left: 4.5rem;" *ngIf = "subject && subject.invalid && subject.touched">Subject field is invalid!!!</span>
+
+        </div>
+        <div class="form-group">
+          <input type="text" formControlName="title" placeholder="Title"class="form-control height fc1"/>
+          <span style="color: red; font-size: 16px; display: block;margin-left: 4.5rem;" *ngIf = "title && title.invalid && title.touched">Title field is invalid!!!</span>
+
+      </div>
+      <div class="form-group">
+        <label class="lblfrm" for="file">Image:</label>
+        <input #Image type="file" formControlName="file"  placeholder="Image" class="form-control  height fc1 imgfrm" (change)="handleFileInput($any($event).target.files)"/>
+        <span style="color: red; font-size: 16px; display: block;margin-left: 4.5rem;" *ngIf = "file && file.invalid && file.touched">Image field is invalid!!!</span>
+
+        <br>
+        <img height="200" *ngIf = "imageUrl" [src]="imageUrl" class="imageform">
+      </div>
+    <div class="form-group">
+      <textarea formControlName="Description" placeholder="Description" class="form-control height des"></textarea>
+        <span style="color: red; font-size: 16px; display: block;margin-left: 4.5rem;" *ngIf = "Description && Description.invalid && Description.touched">Description field is invalid!!!</span>
+
+    </div>
+
+         
+         
+          <div class="text-center">
+              <button [disabled]="registerForm.invalid" class="btn add mr-1 add">Add</button>
+              <button class="btn cancel" type="reset" (click)="onReset()"data-dismiss="modal">Cancel</button>
+          </div>
+          <br>
+      </form>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+<ng-template #editCategoryModal let-modal>
+  <div class="align" role="document">
+      <div class="modal-body card">
+
+        <div class="center">
+          <h3 style=" font-weight: 700;">New Subject</h3>
+        </div>
+        <form [formGroup]="categoryForm" (ngSubmit)="onProceed()">
+          <div class="form-group fg1">
+            <select formControlName="subject" class="form-control height fc1" [ngClass]="{ 'is-invalid': submitted && f.subject.errors }">
+                <option value="">Subject</option>
+                <option value="S">Tamil</option>
+                <option value="S1">Maths</option>
+                <option value="S2">Science</option>
+                <option value="S3">English</option>
+            </select>
+            <div *ngIf="submitted && f.subject.errors" class="invalid-feedback">
+                <div *ngIf="f.subject.errors.required">Title is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+          <input type="text" formControlName="title" placeholder="Title"class="form-control height fc1" [ngClass]="{ 'is-invalid': submitted && f.sample.errors }" />
+          <div *ngIf="submitted && f.sample.errors" class="invalid-feedback">
+              <div *ngIf="f.sample.errors.required"> required</div>
+          </div>
+      </div>
+      <div class="form-group">
+        <label class="lblfrm" for="file">Image:</label>
+        <input #Image type="file" formControlName="file"  placeholder="Image" class="form-control  height fc1 imgfrm" (change)="handleFileInput($any($event).target.files)"/>
+        <br>
+        <img height="200" *ngIf = "imageUrl" [src]="imageUrl" class="imageform">
+      </div>
+    <div class="form-group">
+      <textarea formControlName="Description" placeholder="Description" class="form-control fc2 height des"
+        [ngClass]="{ 'is-invalid': submitted && f.Description.errors }"></textarea>
+      <div *ngIf="submitted && f.Description.errors" class="invalid-feedback">
+        <div *ngIf="f.Description.errors.required">Description is required</div>
+      </div>
+    </div>
+
+          <div class="text-center">
+              <button [disabled]="categoryForm.invalid" class="btn add mr-1 add">Add</button>
+              <button class="btn cancel" type="reset" (click)="onReset()"data-dismiss="modal"(click)="modal.dismiss()">Cancel</button>
+          </div>
+          <br>
+        </form>
+      </div>
+  </div>
+</ng-template>
+
+<!--deleteConfirmation-->
+
+<div class="modal fade" id="deleteConfirmation" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmation"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          
+            <div class="modal-body card">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                <div class="center">
+                    <h3 style="color:#fa828d;">Are you sure ?</h3>
+                </div>
+                <div class="deleteButtons">
+
+                    <button class="deletecancel"data-dismiss="modal">Cancel</button>
+                    <button class="deleteok"data-dismiss="modal">Ok</button>
+
+                </div>
+               
+            </div>
+
+
+        </div>
+    </div>
+</div>

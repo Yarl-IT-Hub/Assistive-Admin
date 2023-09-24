@@ -1,0 +1,189 @@
+<app-sidebar></app-sidebar>
+<div class="left1">
+    <div class="container-fluid pt-3 bg">
+        <img src="/assets/Circle Button.png" alt="plus" class="plus" tabindex="-1" data-toggle="modal" data-target="#exampleModalCenter"
+        aria-hidden="true">
+  
+  
+      <div class=" left2 mt-5">
+        <div class="flex1">
+          <h1>Questions</h1>
+          <input class="form-control search" id="myInput" type="text" placeholder="Search"[(ngModel)]="data">
+        </div>
+        <br>
+        <div class="table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="left">Subject</th>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Type</th>
+                <th>Edit / Delete</th>
+              </tr>
+            </thead>
+  
+            <tbody id="myTable">
+                <tr *ngFor="let item of Users | filter:data">
+                    <td>{{item.subject}}</td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.image}}</td>
+                    <td>{{item.type}}</td>
+                    <div class="icons">
+                      <img src="./assets/edit.png" alt="edit"class="edit"(click)="openModal(editCategoryModal)">
+                      <img src="./assets/dlt.png" alt="delete" class="delete"tabindex="-1" data-toggle="modal" data-target="#deleteConfirmation"
+                      aria-hidden="true">
+                    </div>
+                  </tr>
+                </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!--New Level-->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body card">
+         
+          <div class="center">
+            <h3 style=" font-weight: 700;">New Question</h3>
+          </div>
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          
+            <div class="form-group fg1">
+              <select formControlName="subject" class="form-control height fc1">
+                  <option value="">Subject</option>
+                  <option value="S">Tamil</option>
+                  <option value="S1">Maths</option>
+                  <option value="S2">Science</option>
+                  <option value="S3">English</option>
+              </select>
+              <span style="color: red; font-size: 16px; display: block;margin-left: 4.5rem;" *ngIf = "subject && subject.invalid && subject.touched">Subject field is invalid!!!</span>
+
+          </div>
+          <div class="form-group">
+            <input type="text" formControlName="title" placeholder="Title"class="form-control height fc1"/>
+            <span style="color: red; font-size: 16px; display: block;margin-left: 4.5rem;" *ngIf = "title && title.invalid && title.touched">Title field is invalid!!!</span>
+
+        </div>
+      <div class="form-group">
+        <label class="lblfrm" for="file">Image:</label>
+        <input #Image type="file" formControlName="file"  placeholder="Image" class="form-control  height fc1 imgfrm" (change)="handleFileInput($any($event).target.files)"/>
+        <span style="color: red; font-size: 16px; display: block;margin-left: 4.5rem;" *ngIf = "file && file.invalid && file.touched">File field is invalid!!!</span>
+
+        <br>
+        <img height="200" *ngIf = "imageUrl" [src]="imageUrl" class="imageform">
+      </div>
+
+      <div class="form-group fg1">
+        <select formControlName="type" class="form-control height fc2" aria-placeholder="subject">
+            <option value=""disabled selected hidden>Type</option>
+            <option value="S1">stage1</option>
+            <option value="S2">stage2</option>
+            <option value="S3">stage3</option>
+            <option value="S4">stage4</option>
+        </select>
+        <span style="color: red; font-size: 16px; display: block;margin-left: 4.5rem;" *ngIf = "type && type.invalid && type.touched">Type field is invalid!!!</span>
+
+    </div>
+<div class="text-center">
+                <button [disabled]="registerForm.invalid" class="btn add mr-1 add">Add</button>
+                <button class="btn cancel" type="reset" (click)="onReset()"data-dismiss="modal">Cancel</button>
+            </div>
+            <br>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--Edit-->
+  
+<ng-template #editCategoryModal let-modal>
+  <div class="align" role="document">
+      <div class="modal-body card">
+
+        <div class="center">
+          <h3 style=" font-weight: 700;">New Question</h3>
+        </div>
+        <form [formGroup]="categoryForm" (ngSubmit)="onProceed()">
+         
+          <div class="form-group fg1">
+            <select formControlName="subject" class="form-control height fc1">
+                <option value="">Subject</option>
+                <option value="S">Tamil</option>
+                <option value="S1">Maths</option>
+                <option value="S2">Science</option>
+                <option value="S3">English</option>
+            </select>
+            <span style="color: red; font-size: 16px; display: block;margin-left: 4.5rem;" *ngIf = "subject && subject.invalid && subject.touched">Subject field is invalid!!!</span>
+
+        </div>
+        <div class="form-group">
+          <input type="text" formControlName="title" placeholder="Title"class="form-control height fc1"/>
+          <span style="color: red; font-size: 16px; display: block;margin-left: 4.5rem;" *ngIf = "title && title.invalid && title.touched">Title field is invalid!!!</span>
+
+      </div>
+      <div class="form-group">
+        <label class="lblfrm" for="file">Image:</label>
+        <input #Image type="file" formControlName="file"  placeholder="Image" class="form-control  height fc1 imgfrm" (change)="handleFileInput($any($event).target.files)"/>
+        <span style="color: red; font-size: 16px; display: block;margin-left: 4.5rem;" *ngIf = "file && file.invalid && file.touched">File field is invalid!!!</span>
+
+        <br>
+        <img height="200" *ngIf = "imageUrl" [src]="imageUrl" class="imageform">
+      </div>
+    <div class="form-group fg1">
+      <select formControlName="type" class="form-control height fc2" aria-placeholder="subject">
+          <option value=""disabled selected hidden>Type</option>
+          <option value="S1">stage1</option>
+          <option value="S2">stage2</option>
+          <option value="S3">stage3</option>
+          <option value="S4">stage4</option>
+      </select>
+      <span style="color: red; font-size: 16px; display: block;margin-left: 4.5rem;" *ngIf = "type && type.invalid && type.touched">Type field is invalid!!!</span>
+
+  </div>
+
+          <div class="text-center">
+              <button [disabled]="categoryForm.invalid" class="btn add mr-1 add">Add</button>
+              <button class="btn cancel" type="reset" (click)="onReset()"data-dismiss="modal"(click)="modal.dismiss()">Cancel</button>
+          </div>
+          <br>
+        </form>
+      </div>
+  </div>
+</ng-template>
+  
+  <!--deleteConfirmation-->
+  
+  <div class="modal fade" id="deleteConfirmation" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmation"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            
+              <div class="modal-body card">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  <div class="center">
+                      <h3 style="color:#fa828d;">Are you sure ?</h3>
+                  </div>
+                  <div class="deleteButtons">
+  
+                      <button class="deletecancel"data-dismiss="modal">Cancel</button>
+                      <button class="deleteok"data-dismiss="modal">Ok</button>
+  
+                  </div>
+                 
+              </div>
+  
+  
+          </div>
+      </div>
+  </div>

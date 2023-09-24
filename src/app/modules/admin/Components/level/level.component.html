@@ -1,0 +1,136 @@
+<app-sidebar></app-sidebar>
+<div class="left1">
+  <div class="container-fluid pt-3 bg">
+    <img src="/assets/Circle Button.png" alt="plus" class="plus" tabindex="-1" data-toggle="modal"
+      data-target="#exampleModalCenter" aria-hidden="true">
+
+
+    <div class=" left2 mt-5">
+      <div class="flex1">
+        <h1>Level</h1>
+        <input class="form-control search" id="myInput" type="text" placeholder="Search" [(ngModel)]="data">
+      </div>
+      <br>
+      <div class="table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="left">Title</th>
+              <!-- <th>Description</th> -->
+              <th>Edit / Delete</th>
+            </tr>
+          </thead>
+
+          <tbody id="myTable">
+            <tr *ngFor="let level of _LEVELS | filter:data">
+              <td>{{level.title}}</td>
+              <!-- <td>{{item.description}}</td> -->
+              <div class="icons">
+                <img src="./assets/edit.png" alt="edit" class="edit">
+                <img src="./assets/dlt.png" alt="delete" class="delete" tabindex="-1" data-toggle="modal"
+                  data-target="#deleteConfirmation" (click)="deleteModal(deleteModals, level.id)" aria-hidden="true">
+              </div>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--level-->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body card">
+
+        <div class="center">
+          <h3 style=" font-weight: 700;">New Level</h3>
+        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-group">
+            <input type="text" formControlName="title" placeholder="Title" class="form-control height fc1" />
+            <span style="color: red; font-size: 16px; display: block;margin-left: 4.5rem;"
+              *ngIf="title && title.invalid && title.touched">Title field is invalid!!!</span>
+
+          </div>
+          <div class="form-group">
+            <textarea formControlName="Description" placeholder="Description"
+              class="form-control height des"></textarea>
+            <span style="color: red; font-size: 16px; display: block;margin-left: 4.5rem;"
+              *ngIf="Description && Description.invalid && Description.touched">Description field is invalid!!!</span>
+
+          </div>
+
+          <div class="text-center">
+            <button [disabled]="registerForm.invalid" class="btn add mr-1 add">Add</button>
+            <button class="btn cancel" type="reset" (click)="onReset()" data-dismiss="modal">Cancel</button>
+          </div>
+          <br>
+        </form>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<!--Edit-->
+<ng-template #editCategoryModal let-modal>
+  <div class="align" role="document">
+    <div class="modal-body card">
+
+      <div class="center">
+        <h3 style=" font-weight: 700;">New Level</h3>
+      </div>
+      <form [formGroup]="categoryForm" (ngSubmit)="onProceed()">
+        <div class="form-group">
+          <input type="text" formControlName="title" placeholder="Title" class="form-control height fc1" />
+
+          <span style="color: red; font-size: 16px; display: block;margin-left: 4.5rem;"
+            *ngIf="title && title.invalid && title.touched">Title field is invalid!!!</span>
+        </div>
+        <div class="form-group">
+          <textarea formControlName="Description" placeholder="Description" class="form-control height des"></textarea>
+
+          <span style="color: red; font-size: 16px; display: block;margin-left: 4.5rem;"
+            *ngIf="Description && Description.invalid && Description.touched">Description field is invalid!!!</span>
+        </div>
+
+        <div class="text-center">
+          <button [disabled]="categoryForm.invalid" class="btn add mr-1 add">Add</button>
+          <button class="btn cancel" type="reset" (click)="onReset()" data-dismiss="modal"
+            (click)="modal.dismiss()">Cancel</button>
+        </div>
+        <br>
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<!--deleteConfirmation-->
+
+<div class="modal fade" id="deleteConfirmation" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmation"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body card">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="center">
+          <h3 style="color:#fa828d;">Are you sure ?</h3>
+        </div>
+        <div class="deleteButtons">
+
+          <button class="deletecancel" data-dismiss="modal">Cancel</button>
+          <button class="deleteok" (click)="delete()">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

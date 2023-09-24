@@ -1,0 +1,459 @@
+.plus{
+    display: flex;
+    margin-left: auto;
+    font-size: 20px;
+    margin-top: 2rem;
+    cursor: pointer;
+    width: 38px;
+}
+.form-control{
+    height: 0px;
+}
+.flex{
+    display: flex;
+    padding-top: 1rem;
+}
+.bg{
+    background-color: #f5f9ff;;
+    height:100vh;
+    margin-top: -3rem;
+}
+
+.height{
+    height: auto;
+}
+.card{
+    width:650px;
+}
+.h1, h1{
+    font-size: 30px;
+    margin-left: 25px;
+}
+.search{
+    padding: 25PX;
+    width: 25%;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-top: -3.5rem;
+    margin-right: 50px;
+    color: #808080a6;
+}
+.search::placeholder{
+    color:#AFAFAF ;
+    font-size: 18px;
+    font-weight: normal !important;
+    opacity: 0.7;
+}
+.mt-5{
+    background: white;
+    width: 100%;
+    display: block;
+
+}
+.table td {
+    vertical-align: top;
+    text-align: center;
+}
+.table{
+    border: none;
+}
+
+td{
+    color: #AFAFAF;
+    line-height: 80px;
+}
+th{
+    color: white;
+    background: #3177E8;
+    font-weight: normal;
+}
+.icons{
+    font-size: 25px;
+    padding: 2.3rem;
+    display: flex;
+    justify-content: center;
+}
+tr{
+    border-bottom: 0.2px solid #dad9d9;
+}
+.right{
+
+    padding: 15px 17px;
+    background: #00a000;
+    font-size: 20px;
+    border-radius: 40px;
+    height: 50px;
+    width: 50px;
+    color: white;
+}
+.delete {
+    margin-left: 1rem;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+.edit{
+    margin-left: 1rem;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+.modal-content {
+    width: 0px;
+    border: none;
+    border-radius: 20px;
+}
+.flex5{
+    display: flex;
+    justify-content: space-between;
+    width: 76%;
+    position: absolute;
+    margin-left: 55px;
+    border-radius: 10px;
+    border: 1px solid #8080805c;
+    padding: 10px;
+
+
+  }
+  .imageText{
+      font-size: 20px;
+      color:grey;
+      padding-top: 10px;
+      padding-left: 0.5rem;
+
+  }
+  .hidden{
+      opacity: 0;
+  }
+  .folder{
+    font-size: 30px;
+    background-color: #1325fb;
+    border-radius: 30px;
+    width: 50px;
+    height: 50px;
+    color: white;
+    padding: 10px 10px;
+  }
+
+.center{
+    display: flex;
+    justify-content: center;
+    color:#1325fb;
+    padding-top: 4rem;
+}
+textarea.form-control {
+    height: auto;
+    margin-top: 1rem;
+}
+.fc1{
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 1rem 1rem;
+    width: 80%;
+    margin: auto;
+    color: #808080a6;
+}.fc2{
+    color: #808080a6;
+}
+.fg1{
+    padding-top: 3rem;
+}
+.custom-file-input {
+    opacity: 0.9;
+}        
+.des{
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 20px;
+    width: 80%;
+    margin: auto;
+    padding-bottom: 40px;
+}
+h3{
+    margin-bottom: 2.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+.add {
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    color:white;
+    background:#3177E8;
+    font-size: 18px;
+    justify-self: center;
+    width: 80%;
+    margin-top: -1rem;
+    font-weight: 300;
+}
+.cancel{
+    padding: 15px;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 15px;
+    color:#3177E8;
+    background: none;
+    font-size: 18px;
+    justify-self: center;
+    width: 80%;
+    font-weight: 300;
+}
+.left1{
+    font-family: 'Poppins';
+}
+.card{
+
+    font-family: 'Poppins';
+
+}
+.text-center {
+    text-align: center!important;
+    display: grid;
+    margin-top: 2rem;
+
+}
+.marginLeft{
+    padding: 0rem 2rem;
+}
+.radius{
+    border-radius: 0px;;
+}
+
+.deleteButtons{
+    display:flex ;
+    border: none;
+    padding: 2rem;
+    margin: auto;
+}
+.deletecancel{
+    color:blue;
+    border:none;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background:#f9f9f9;
+}
+.deleteok:hover{
+    color:white;
+}
+.deleteok{
+    margin: 1rem;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 10px;
+    color:white;
+    background-color: #de2f4e;
+
+}
+.close{
+    display: flex;
+    justify-content: flex-end;
+    border: none;
+}
+@media screen and (min-width: 1400px) {
+
+    .search {
+     
+        margin-left: auto;
+    }
+    .table td, .table th {
+        padding: 2rem 8rem;
+    
+    }
+    .left2{
+       
+        border-radius: 10px;
+    }
+    .align{
+        align-self: center;
+    }
+  }
+@media screen and (min-width: 1200px) {
+  
+    .search {
+     
+        margin-left: auto;
+    }
+    .table td, .table th {
+        padding: 2rem 8rem;
+    
+    }
+    .left2{
+       
+        border-radius: 10px;
+    }
+    .align{
+        align-self: center;
+    }
+  }
+ 
+@media screen and (min-width: 768px) {
+    .left2{
+        padding: 2rem 0rem;
+        border-radius: 10px;
+    }
+    .left1 {
+        width: 80.5%;
+        margin-left: auto;
+        }
+    .table td, .table th {
+        padding: 1rem 2rem;
+        font-size: 20px;
+        display: revert;
+        text-align: center;
+    }
+    .card {
+        width: 600px;
+        border-radius: 20px;
+    }
+  
+  }
+
+@media screen and (max-width: 767px) {
+  
+    .left1{
+        padding: 0px;
+    }
+    .left2{
+       
+        border-radius: 10px;
+    }
+    .search {
+        padding: 1rem;
+        width: 100%;
+        border-radius: 10px;
+        margin-left: auto;
+        margin-top: 1rem;
+    }
+    .flex1 {
+        display: grid;
+        padding-top: 1rem;
+    }
+    h1{
+    font-size: 2rem;
+    margin: auto;
+}
+.card {
+    width: 100%;
+    border-radius: 10px;
+}
+.align{
+    align-self: center;
+}
+.add {
+  
+    font-size: 20px;
+  
+}
+.cancel {
+  
+    font-size: 20px;
+  
+}
+.modal-content{
+    width:120%;
+    border-radius: 15px;
+}
+.flex5 {
+
+    margin-left: 36px;
+    width:73%;
+
+}
+.plus {
+    
+  
+    margin-top: 0rem;
+
+}
+.icons{
+    font-size: 15px;
+    padding: 35px 0px     
+}
+.card {
+    width: 395px;
+        border-radius: 10px;
+}
+  }
+  @media screen and (max-width: 400px) {
+    
+    .plus {
+    
+  
+        margin-top: 0rem;
+    
+    }
+    .align{
+        align-self: center;
+    }
+    .icons{
+        font-size: 15px;
+        padding: 35px 0px     
+    }
+    .right {
+        padding: 8px 10px;
+        background: #00a000;
+        font-size: 15px;
+        border-radius: 40px;
+        height: 30px;
+        width: 30px;
+        color: white;
+    }
+    .left2{
+       
+        border-radius: 10px;
+    }
+    .trash {
+        padding: 5px 7px;
+        background: #c01818;
+        font-size: larger;
+        border-radius: 40px;
+        height: 30px;
+        width: 30px;
+        color: white;
+    }
+    .edit {
+        cursor: pointer;
+    }
+    .search {
+        padding: 1rem;
+        width: 100%;
+        border-radius: 10px;
+        margin-left: auto;
+        margin-top: 1rem;
+    }
+    .flex1 {
+        display: grid;
+        padding-top: 1rem;
+    }
+    h1{
+    font-size: 2rem;
+    margin: auto;
+}
+.card {
+    width: 345px;
+        border-radius: 10px;
+}
+.add {
+  
+    font-size: 20px;
+  
+}
+.cancel {
+  
+    font-size: 20px;
+  
+}
+.flex5 {
+
+    margin-left: 27px;
+    width:73%;
+
+}
+}
+@media screen and (max-width: 300px){
+    .card {
+    width: 265px;
+    border-radius: 10px;
+    }
+}
